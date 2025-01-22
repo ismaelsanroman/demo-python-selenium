@@ -1,0 +1,44 @@
+name: CI - Behave Selenium Tests
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cuando hay cambios en la rama main
+  pull_request:
+    branches:
+      - main  # Se ejecuta en cada PR a main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout del código
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: 📦 Instalar dependencias
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 📀 Instalar Google Chrome y WebDriver
+        run: |
+          sudo apt update
+          sudo apt install -y google-chrome-stable
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+          curl -sS -o chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
+          unzip chromedriver.zip
+          sudo mv chromedriver /usr/local/bin/
+          chromedriver --version
+
+      - name: 🚀 Ejecutar pruebas con Behave
+        run: |
+          source venv/bin/activate
+          behave

@@ -1,0 +1,52 @@
+Feature: DemoQA Text-Box # features/google_search.feature:1
+
+  Scenario: Rellenamos el formulario de TextBox   # features/google_search.feature:3
+    Given el usuario está en la página de DemoQA  # features/steps/demoqa_steps.py:6
+    And clicamos sobre el apartado "Elements"     # features/steps/demoqa_steps.py:11
+    And nos dirigimos a "Text Box"                # features/steps/demoqa_steps.py:15
+    When interactúa con el formulario de registro # features/steps/demoqa_steps.py:19
+      | first_name | last_name |
+      | Ismael     | García    |
+    Then el formulario es enviado correctamente   # features/steps/demoqa_steps.py:27
+      Traceback (most recent call last):
+        File "D:\Ismael\Documents\estudio\demo python-selenium\venv\Lib\site-packages\behave\model.py", line 1329, in run
+          match.run(runner.context)
+        File "D:\Ismael\Documents\estudio\demo python-selenium\venv\Lib\site-packages\behave\matchers.py", line 98, in run
+          self.func(context, *args, **kwargs)
+        File "features\steps\demoqa_steps.py", line 29, in form_is_submitted
+          success_message = context.driver.find_element(By.ID, "submit-message")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "D:\Ismael\Documents\estudio\demo python-selenium\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 888, in find_element
+          return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "D:\Ismael\Documents\estudio\demo python-selenium\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+          self.error_handler.check_response(response)
+        File "D:\Ismael\Documents\estudio\demo python-selenium\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+          raise exception_class(message, screen, stacktrace)
+      selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="submit-message"]"}
+        (Session info: chrome=131.0.6778.265); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+      Stacktrace:
+      	GetHandleVerifier [0x0038FD53+23747]
+      	(No symbol) [0x00317D54]
+      	(No symbol) [0x001EBE53]
+      	(No symbol) [0x0022FCA6]
+      	(No symbol) [0x0022FEEB]
+      	(No symbol) [0x0026D852]
+      	(No symbol) [0x00251E44]
+      	(No symbol) [0x0026B41E]
+      	(No symbol) [0x00251B96]
+      	(No symbol) [0x00223F3C]
+      	(No symbol) [0x00224EBD]
+      	GetHandleVerifier [0x0066AC73+3017699]
+      	GetHandleVerifier [0x0067B93B+3086507]
+      	GetHandleVerifier [0x006740F2+3055714]
+      	GetHandleVerifier [0x00425AF0+637536]
+      	(No symbol) [0x00320A5D]
+      	(No symbol) [0x0031DA28]
+      	(No symbol) [0x0031DBC5]
+      	(No symbol) [0x003107F0]
+      	BaseThreadInitThunk [0x76537BA9+25]
+      	RtlInitializeExceptionChain [0x773AC0CB+107]
+      	RtlClearBits [0x773AC04F+191]
+
+
