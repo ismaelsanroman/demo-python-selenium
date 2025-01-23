@@ -26,9 +26,17 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
-          pip install -r requirements.txt
           pip install -U allure-behave
-          sudo apt update && sudo apt install -y allure
+
+      - name: 🔽 Instalar Allure CLI manualmente
+        run: |
+          curl -o allure-2.23.0.tgz -Ls https://github.com/allure-framework/allure2/releases/download/2.23.0/allure-2.23.0.tgz
+          tar -xzf allure-2.23.0.tgz
+          sudo mv allure-2.23.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+
+      - name: ✅ Verificar instalación de Allure
+        run: allure --version
 
       - name: 📀 Instalar Google Chrome y ChromeDriver
         run: |
@@ -37,12 +45,15 @@ jobs:
           chromedriver --version
           google-chrome --version
 
-      - name: 🚀 Ejecutar pruebas con Behave y generar reporte Allure
+      - name: 📂 Crear carpeta de historial de Allure
+        run: mkdir -p reports/allure-history
+
+      - name: 🚀 Ejecutar pruebas con Behave (sin Allure)
         run: |
-          source venv/bin/activate
-          rm -rf reports/allure-results/*
-          mkdir -p reports/allure-history
           behave --no-capture || true
+
+      - name: 🛠 Generar Reporte de Allure
+        run: |
           allure generate reports/allure-results -o reports/allure-report --clean
 
       - name: 📤 Subir reporte de Allure como artefacto
