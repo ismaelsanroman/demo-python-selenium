@@ -27,6 +27,7 @@ jobs:
           source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
+          pip install allure-behave==2.13.4
 
       - name: 📀 Instalar Google Chrome y ChromeDriver
         run: |
@@ -38,7 +39,8 @@ jobs:
       - name: 🚀 Ejecutar pruebas con Behave y generar reporte Allure
         run: |
           source venv/bin/activate
-          behave -f allure_behave.formatter:AllureFormatter -o reports/allure-results
+          rm -rf reports/allure-results/*
+          behave -f allure_behave.formatter:AllureFormatter -o reports/allure-results || true
 
       - name: 📤 Subir reporte de Allure como artefacto
         uses: actions/upload-artifact@v4
