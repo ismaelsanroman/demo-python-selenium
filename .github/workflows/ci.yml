@@ -28,6 +28,7 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
           pip install -U allure-behave
+          sudo apt update && sudo apt install -y allure
 
       - name: 📀 Instalar Google Chrome y ChromeDriver
         run: |
