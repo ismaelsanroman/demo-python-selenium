@@ -7,7 +7,7 @@ from pages.textbox_page import TextBoxPage  # ✅ Importamos la clase necesaria
 def before_all(context):
     """Se ejecuta antes de todas las pruebas, inicializa el WebDriver."""
     options = Options()
-    # options.add_argument("--headless")  # Opcional, quitar si quieres ver la ejecución
+    options.add_argument("--headless")  # Opcional, quitar si quieres ver la ejecución
     options.add_argument("--start-maximized")  # Maximizar ventana para evitar problemas
     service = Service(ChromeDriverManager().install())
     context.driver = webdriver.Chrome(service=service, options=options)
