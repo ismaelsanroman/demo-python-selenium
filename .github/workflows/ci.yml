@@ -41,7 +41,7 @@ jobs:
           behave -f allure_behave.formatter:AllureFormatter -o reports/allure-results
 
       - name: 📤 Subir reporte de Allure como artefacto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: reports/allure-results
