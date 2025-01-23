@@ -27,7 +27,7 @@ jobs:
           source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install allure-behave==2.13.4
+          pip install allure-behave==2.13.5
 
       - name: 📀 Instalar Google Chrome y ChromeDriver
         run: |
