@@ -47,14 +47,18 @@ jobs:
 
       - name: 📂 Crear carpeta de historial de Allure
         run: mkdir -p reports/allure-history
+          mkdir -p reports/allure-results
 
       - name: 🚀 Ejecutar pruebas con Behave (sin Allure)
         run: |
-          behave --no-capture || true
+          behave -f allure_behave.formatter:AllureFormatter -o reports/allure-results || true
 
       - name: 🛠 Generar Reporte de Allure
         run: |
           allure generate reports/allure-results -o reports/allure-report --clean
+
+      - name: 🔎 Verificar si allure-results se genera
+        run: ls -la reports/allure-results || echo "⚠️ No se encontró allure-results"
 
       - name: 📤 Subir reporte de Allure como artefacto
         uses: actions/upload-artifact@v4
