@@ -3,10 +3,10 @@ name: CI - Behave Selenium Tests
 on:
   push:
     branches:
-      - main  # Se ejecuta cuando hay cambios en la rama main
+      - main # Se ejecuta cuando hay cambios en la rama main
   pull_request:
     branches:
-      - main  # Se ejecuta en cada PR a main
+      - main # Se ejecuta en cada PR a main
 
 jobs:
   test:
@@ -35,7 +35,21 @@ jobs:
           chromedriver --version
           google-chrome --version
 
-      - name: 🚀 Ejecutar pruebas con Behave
+      - name: 🚀 Ejecutar pruebas con Behave y generar reporte Allure
         run: |
           source venv/bin/activate
-          behave
+          behave -f allure_behave.formatter:AllureFormatter -o reports/allure-results
+
+      - name: 📤 Subir reporte de Allure como artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: reports/allure-results
+
+      - name: 📊 Publicar reporte de Allure
+        uses: simple-elf/allure-report-action@v1
+        if: always()
+        with:
+          allure_results: reports/allure-results
+          gh_pages: gh-pages
+          allure_history: reports/allure-history
