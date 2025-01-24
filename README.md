@@ -126,5 +126,5 @@ Feature: Rellenamos el formulario de TextBox
 ---
 
 ## 📌 Contacto
-📧 Email: [ismaelsanromansanchez@gmail.com](mailto:ismaelsanromansanchez@gmail.com)  
-🐙 GitHub: [https://github.com/ismaelsanroman](https://github.com/ismaelsanroman)
+[📧 Email](mailto:ismaelsanromansanchez@gmail.com)  
+[🤖 GitHub:](https://github.com/ismaelsanroman) 
