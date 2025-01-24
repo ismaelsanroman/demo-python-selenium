@@ -47,7 +47,7 @@ Este proyecto automatiza la interacción con la página [DemoQA](https://demoqa.
 ## ⚙️ Instalación
 ### 🔹 1. Clonar el repositorio
 ```sh
-git clone https://github.com/tu-usuario/demo-python-selenium.git
+git clone https://github.com/ismaelsanroman/demo-python-selenium.git
 cd demo-python-selenium
 ```
 
