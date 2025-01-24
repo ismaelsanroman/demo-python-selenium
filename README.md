@@ -18,9 +18,6 @@ Este proyecto automatiza la interacción con la página [DemoQA](https://demoqa.
 ## 📂 Estructura del proyecto
 ```
 📦 demo-python-selenium
-├── 📂 .github               # Configuración de GitHub (acciones, workflows, etc.)
-├── 📂 .idea                 # Configuración de JetBrains (PyCharm)
-├── 📂 .vscode               # Configuración de VS Code
 ├── 📂 allure-report         # Reportes generados por Allure
 ├── 📂 features              # Escenarios de prueba en Gherkin
 │   ├── 📂 steps             # Implementación de los steps en Python
@@ -34,7 +31,6 @@ Este proyecto automatiza la interacción con la página [DemoQA](https://demoqa.
 │   ├── allure-report
 │   ├── allure-results
 ├── 📂 venv                  # Entorno virtual de Python
-├── .gitignore               # Archivos ignorados por Git
 ├── behave.ini               # Configuración de Behave
 ├── conftest.py              # Configuración de pytest (si se usa)
 ├── pretty.output            # Salida formateada (quizás logs o resultados de pruebas)
