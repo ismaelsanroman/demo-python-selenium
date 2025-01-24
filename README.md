@@ -1,4 +1,4 @@
-# 🧪 DemoQA Automation Testing
+# 🧪 Demo Automation Testing con Python, Selenium y Cucumber
 
 ## 📌 Descripción
 Este proyecto automatiza la interacción con la página [DemoQA](https://demoqa.com/) utilizando **Selenium** y **Behave** (BDD con Python). Además, los reportes de pruebas se generan con **Allure** para visualizar los resultados de manera gráfica.
